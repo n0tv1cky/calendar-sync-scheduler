@@ -1,0 +1,83 @@
+{
+  "term": "MSDSM Batch 6 - Term 1",
+
+  "scheduleFile": {
+    "id": "<YOUR_SCHEDULE_SHEET_ID>",
+    "note": "Raw .xlsx on Drive (view-only) -- read via Drive files.get(alt=media) + the xlsx package, not the Sheets API. Same file scripts/attendance uses.",
+    "sheetName": "Sheet1",
+    "legendMarker": "Course Code",
+    "headerRow": {
+      "date": "Date",
+      "day": "Day"
+    }
+  },
+
+  "subjectCodeMap": {
+    "ME": "DSM 107",
+    "MC": "DSM 104",
+    "BR": "DSM 106",
+    "SM": "DSM 108",
+    "MP": "DSM 109",
+    "PS": "DSM 101",
+    "PFDS": "DSM 102",
+    "DS": "DSM 103"
+  },
+
+  "nonClassMarkers": ["holiday", "mid term", "end term", "iim indore", "iit indore"],
+
+  "timeSlots": {
+    "weekday": [
+      { "column": 2, "label": "Session-I", "start": "19:00", "end": "20:00" },
+      { "column": 3, "label": "Session-II", "start": "20:15", "end": "21:15" }
+    ],
+    "weekend": [
+      { "column": 4, "label": "Session-I", "start": "10:45", "end": "11:45" },
+      { "column": 5, "label": "Session-II", "start": "12:00", "end": "13:00" },
+      { "column": 6, "label": "Session-III", "start": "14:45", "end": "15:45" },
+      { "column": 7, "label": "Session-IV", "start": "16:00", "end": "17:00" }
+    ]
+  },
+
+  "timeZone": "Asia/Kolkata",
+
+  "calendar": {
+    "id": "<YOUR_GOOGLE_CALENDAR_ID>",
+    "note": "The user's existing 'Term I Schedule' calendar -- already has ~60 manually-created events on it in a fixed convention (see lib/calendarEvents.mjs), which this sync adopts/tags rather than duplicating.",
+    "sourceTag": "msdsm-schedule-sync"
+  },
+
+  "instituteColors": {
+    "IIT Indore": "11",
+    "IIM Indore": null
+  },
+
+  "zoom": {
+    "meetingLink": "<YOUR_ZOOM_MEETING_LINK>",
+    "meetingId": "<YOUR_ZOOM_MEETING_ID>",
+    "passcode": "<YOUR_ZOOM_PASSCODE>"
+  },
+
+  "readingMaterialFolder": "<YOUR_READING_MATERIAL_DRIVE_FOLDER_URL>",
+
+  "sync": {
+    "intervalMinutes": 60,
+    "activeHours": { "start": "08:00", "end": "20:00" },
+    "note": "Syncs every intervalMinutes, but only within activeHours (in timeZone above) -- outside that window, install-launchd.sh doesn't even schedule a wakeup, so nothing runs at all, not just a no-op check-in. A manually-run --force sync ignores both the interval and the active-hours window."
+  },
+
+  "googleOAuth": {
+    "clientSecretFile": "./oauth-client.json",
+    "tokenFile": "~/.calendar-sync/google-oauth-token.json"
+  },
+
+  "stateFile": "~/.calendar-sync/last-run.json",
+  "logging": {
+    "runsLogFile": "~/.calendar-sync/runs.jsonl"
+  },
+
+  "notifications": {
+    "enabled": true,
+    "toEmail": "<YOUR_INSTITUTE_EMAIL>",
+    "note": "One summary email per sync run, only when something actually changed (created/updated/deleted > 0) -- never one email per event. Sent via Gmail API as the same account (gmail.send scope), so fromEmail must match the authenticated account."
+  }
+}

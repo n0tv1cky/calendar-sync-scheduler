@@ -1,0 +1,16 @@
+{
+  "name": "calendar-sync",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Syncs the MSDSM class schedule sheet into a Google Calendar, creating/updating/deleting events as the sheet changes.",
+  "scripts": {
+    "sync": "node sync-schedule.mjs",
+    "sync:dry": "node sync-schedule.mjs --dry-run",
+    "sync:force": "node sync-schedule.mjs --force"
+  },
+  "dependencies": {
+    "googleapis": "^174.0.1",
+    "xlsx": "^0.18.5"
+  }
+}
