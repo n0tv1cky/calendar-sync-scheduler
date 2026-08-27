@@ -10,6 +10,6 @@
 
 set -euo pipefail
 
-SYNC_SCRIPT="/Users/n0tv1cky/Documents/Personal/masters/scripts/calendar-sync/sync-schedule.mjs"
+SYNC_SCRIPT="/Users/n0tv1cky/Documents/Personal/masters/projects/calendar-sync/sync-schedule.mjs"
 
 exec node "$SYNC_SCRIPT" "$@"

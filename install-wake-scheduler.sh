@@ -6,7 +6,7 @@
 # events, unreliable on battery).
 #
 # Requires sudo -- run this yourself, not via an unattended agent:
-#   ! cd /Users/n0tv1cky/Documents/Personal/masters/scripts/calendar-sync && sudo ./install-wake-scheduler.sh
+#   ! cd /Users/n0tv1cky/Documents/Personal/masters/projects/calendar-sync && sudo ./install-wake-scheduler.sh
 #
 # This is a genuinely optional add-on to the core sync (which already has
 # its own catch-up-on-wake safety net via sync-schedule.mjs's
@@ -23,7 +23,7 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-REPO_DIR="/Users/n0tv1cky/Documents/Personal/masters/scripts/calendar-sync"
+REPO_DIR="/Users/n0tv1cky/Documents/Personal/masters/projects/calendar-sync"
 DEPLOY_DIR="/Users/n0tv1cky/.calendar-sync"
 PLIST_LABEL="com.n0tv1cky.calendar-sync-wake-scheduler"
 PLIST_PATH="/Library/LaunchDaemons/${PLIST_LABEL}.plist"

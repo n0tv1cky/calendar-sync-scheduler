@@ -21,7 +21,7 @@
 
 set -euo pipefail
 
-REPO_DIR="/Users/n0tv1cky/Documents/Personal/masters/scripts/calendar-sync"
+REPO_DIR="/Users/n0tv1cky/Documents/Personal/masters/projects/calendar-sync"
 DEPLOY_DIR="$HOME/.calendar-sync"
 PLIST_LABEL="com.n0tv1cky.calendar-sync"
 PLIST_PATH="$HOME/Library/LaunchAgents/${PLIST_LABEL}.plist"
