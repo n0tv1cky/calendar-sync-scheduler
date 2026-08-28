@@ -145,7 +145,7 @@ async function main() {
       for (const { field, before, after } of changes) console.log(`      ${field}: ${JSON.stringify(before)} -> ${JSON.stringify(after)}`);
     }
   }
-  if (result.deleted.length) console.log("  deleted:", result.deleted.map((e) => `${e.key} (${e.summary})`).join(", "));
+  if (result.deleted.length) console.log("  deleted:", result.deleted.map((e) => `${e.key ?? "untagged-leftover"} (${e.summary})`).join(", "));
 
   // Full per-event detail (not just counts) goes to runs.jsonl -- one JSON
   // object per run, tagged with runId -- specifically so a question like
